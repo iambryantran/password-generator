@@ -27,6 +27,8 @@ var specialCharacters = [
   '.',
 ];
 
+// Lines 32-93 was provided by instructor during class
+
 // Array of numeric characters to be included in password
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
@@ -106,26 +108,26 @@ function generatePassword(){
   var hasNumbers = confirm("Numbers?");
   var hasSpecialCharacters = confirm("Special Characters?");
 
-  //CREATE CHARACTER ARRAY
+  // Create character array
 
   if (hasLowerCase) {
     optionsArr = optionsArr.concat(lowerCasedCharacters)
   }
-
   if (hasUpperCase) {
     optionsArr = optionsArr.concat(upperCasedCharacters)
   } 
-
   if (hasNumbers) {
     optionsArr = optionsArr.concat(numericCharacters)
   }
-
   if (hasSpecialCharacters) {
     optionsArr = optionsArr.concat(specialCharacters)
   }
-  console.log(optionsArr);
-  // NEED FOR LOOP TO RANDOMLY CHOOSE FROM ARRAY AND CONCAT LETTERS TO CREATE PASSWORD
 
+  // Create for loop to choose password characters
+  for (var i = 0; i < length; i++) {
+    var randomIndex = Math.floor(Math.random() * optionsArr.length);
+    password += optionsArr[randomIndex];
+  }
   return password;
 };
 
@@ -133,9 +135,7 @@ function generatePassword(){
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
